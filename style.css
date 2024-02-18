@@ -83,12 +83,14 @@ hr {
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  &:hover {
-    color: var(--pink);
-  }
-  & p {
-    text-align: left;
-  }
+  width: 100%;
+  text-align: left; 
+  border: none; 
+  background-color: var(--white);
+}
+button:focus-visible {
+  outline-color: var(--dark-purple);
+  outline-offset: 2px;
 }
 .acc-content {
   display: grid;
@@ -119,4 +121,10 @@ hr {
   .acc-content {
     font-size: 0.8rem;
   }
+}
+
+@media (hover: hover) {
+  .acc-btn:hover {
+    color: var(--pink);
+}
 }
