@@ -4,18 +4,13 @@ acc.forEach(btn => {
         const clickedBtn = e.currentTarget;
         const content = clickedBtn.querySelector('.acc-content');
         const accIcon = clickedBtn.querySelector("img");
-        const isOpen = content.getAttribute("aria-hidden");
-        if (isOpen === "false" ) {
-            content.setAttribute("aria-hidden", "true")
-            accIcon.setAttribute('src', 'assets/images/icon-plus.svg')
-        } else {
-            content.setAttribute("aria-hidden", "false")
-            accIcon.setAttribute('src', 'assets/images/icon-minus.svg')
-        }
-        acc.forEach(acc => {
-           if (clickedBtn !== acc) {
-            acc.querySelector('.acc-content').setAttribute("aria-hidden", "true")
-            acc.querySelector('img').setAttribute('src', 'assets/images/icon-plus.svg')
+        const isExpanded = content.getAttribute("aria-expanded") === "false"; // this will return true
+        content.setAttribute('aria-expanded', isExpanded); // setting the aria expanded to true to open the accordion
+        accIcon.setAttribute('src', isExpanded ? 'assets/images/icon-minus.svg' : 'assets/images/icon-plus.svg');
+        acc.forEach(otherBtn => {
+           if (otherBtn !== clickedBtn) {
+            otherBtn.querySelector('.acc-content').setAttribute("aria-expanded", "false")
+            otherBtn.querySelector('img').setAttribute('src', 'assets/images/icon-plus.svg')
            }            
         })
     })

@@ -4,14 +4,8 @@
     --grayish-purple: hsl(292, 16%, 49%);
     --dark-purple: hsl(292, 42%, 14%);
     --light-blue: hsl(228, 45%, 44%);
+    --pink: hsl(281, 83%, 54%);
 }
-  
-@font-face {
-    font-family: 'Work Sans';
-    src: url('/assets/fonts/WorkSans-Italic-VariableFont_wght.ttf') format('truetype');
-    font-style: italic;
-  }
-  
   @font-face {
     font-family: 'Work Sans';
     src: url('/assets/fonts/WorkSans-VariableFont_wght.ttf') format('truetype');
@@ -51,11 +45,11 @@
   }
 
 .accordion {
-    max-width: 40rem;
-    padding: 2rem;
+    max-width: 37.5rem;
+    padding: 2.5rem;
     background-color: var(--white);
     border-radius: 20px;
-    box-shadow: 2px 2px 40px 2px hsl(0 0% 0% / 0.4);
+    box-shadow: 0px 32px 56px 0px rgba(80, 0, 118, 0.10);
 }
 
 .faq-title {
@@ -63,11 +57,17 @@
     justify-content: flex-start;
     align-items: center;
     margin-block-end: 2rem;
+    gap: 1.5rem;
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 3.5rem;
     font-weight: 700;
+    color: var(--dark-purple);
+}
+
+.star-icon {
+  aspect-ratio: 1;
 }
 
 button {
@@ -76,16 +76,21 @@ button {
     width: 100%;
 }
 
+hr {
+  background-color: var(--light-pink);
+  height: 1px;
+  border: none;
+  margin-block: 1.5rem;
+}
 .acc-btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   &:hover {
-    color: var(--grayish-purple)
+    color: var(--pink);
   }
   & p {
     text-align: left;
@@ -94,21 +99,29 @@ button {
 .acc-content {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  color: var(--grayish-purple);
 }
-/* This is a must to be hide the content with CSS grid */
 .acc-content > p {
   overflow: hidden;
 }
-.acc-content[aria-hidden="false"]{
+.acc-content[aria-expanded="true"]{
   grid-template-rows: 1fr;
+  padding-top: 1.5rem;
 }
 
 @media (width <= 768px ) {
   body {
     background-image: url(/assets/images/background-pattern-mobile.svg);
+    padding: 1.5rem;
   }
-  .accordion {
-    margin-inline: 1rem;
+  h1 {
+    font-size: 2rem;
+  }
+  .star-icon {
+    width: 24px;
+  }
+  .acc-content {
+    font-size: 0.8rem;
   }
 }
