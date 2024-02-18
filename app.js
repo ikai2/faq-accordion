@@ -1,16 +1,22 @@
-const accBtns = document.querySelectorAll('.acc');
-
-accBtns.forEach(btn => {
+const acc = document.querySelectorAll('.acc');
+acc.forEach(btn => {
     btn.addEventListener('click', e => {
-        const btn = e.currentTarget;
-        const content = btn.querySelector('.acc-content');
-        const accIcon = btn.querySelector("img");
-        if (content.dataset.accHidden === "false" ) {
-            content.dataset.accHidden = true;
+        const clickedBtn = e.currentTarget;
+        const content = clickedBtn.querySelector('.acc-content');
+        const accIcon = clickedBtn.querySelector("img");
+        const isOpen = content.getAttribute("aria-hidden");
+        if (isOpen === "false" ) {
+            content.setAttribute("aria-hidden", "true")
             accIcon.setAttribute('src', 'assets/images/icon-plus.svg')
         } else {
-            content.dataset.accHidden = false;
+            content.setAttribute("aria-hidden", "false")
             accIcon.setAttribute('src', 'assets/images/icon-minus.svg')
         }
+        acc.forEach(acc => {
+           if (clickedBtn !== acc) {
+            acc.querySelector('.acc-content').setAttribute("aria-hidden", "true")
+            acc.querySelector('img').setAttribute('src', 'assets/images/icon-plus.svg')
+           }            
+        })
     })
 })
